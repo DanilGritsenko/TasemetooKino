@@ -15,7 +15,7 @@ namespace GritsenkoFinalMovies.Models
     }
 
 
-    public class UserDbInitializer : DropCreateDatabaseAlways<UserContext>
+    public class UserDbInitializer : DropCreateDatabaseIfModelChanges<UserContext>
     {
         protected override void Seed(UserContext db)
         {

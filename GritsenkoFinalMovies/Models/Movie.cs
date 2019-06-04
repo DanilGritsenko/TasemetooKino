@@ -12,5 +12,6 @@ namespace GritsenkoFinalMovies.Models
         public string Director { get; set; }
         public DateTime Date { get; set; }
         public int Price { get; set; }
+        public virtual ICollection<Purchase> Purchases { get; set; }
     }
 }

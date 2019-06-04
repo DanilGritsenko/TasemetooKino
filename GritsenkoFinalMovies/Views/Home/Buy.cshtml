@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Buy a movie ticket";
+}
+
+<div>
+    <h3>Purchase Form</h3>
+    <form method="post">
+        <input type="hidden" value="@ViewBag.MovieId" name="MovieId" />
+        <table>
+            <tr>
+                <td><p>Enter your name</p></td>
+                <td><input type="text" name="Person" /></td>
+            </tr>
+            <tr>
+                <td><p>Enter your address</p></td>
+                <td><input type="text" name="Address" /></td>
+            </tr>
+            <tr><td><input type="submit" value="Send" /></td><td></td></tr>
+        </table>
+    </form>
+</div>

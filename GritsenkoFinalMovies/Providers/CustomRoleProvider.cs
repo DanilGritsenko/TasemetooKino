@@ -41,7 +41,7 @@ namespace GritsenkoFinalMovies.Providers
             string[] roles = new string[] { };
             using (UserContext db = new UserContext())
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == username);
+                User user = db.Users.FirstOrDefault(u => u.Name == username);
                 if (user != null)
                 {
                     Role userRole = db.Roles.Find(user.RoleId);

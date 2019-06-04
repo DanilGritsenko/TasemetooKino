@@ -1,7 +1,75 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Gritsenko Kino Admin";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<h1> Click on table's name to redirect to table's controller</h1>
+
+<h1>@Html.ActionLink("Movies", "Index", "Movies")</h1>
+
+<table border="1">
+    <tr>
+        <td><p>Movie Name</p></td>
+        <td><p>Director</p></td>
+        <td><p>Ticket Price</p></td>
+    </tr>
+    @foreach (var m in ViewBag.Movies)
+    {
+        <tr>
+            <td><p>@m.Name</p></td>
+            <td><p>@m.Director</p></td>
+            <td><p>@m.Price€</p></td>
+        </tr>
+    }
+</table>
+
+<h1>@Html.ActionLink("Users", "Index", "Users")</h1>
+<table border="1">
+    <tr>
+        <td><p>User Name</p></td>
+        <td><p>Password</p></td>
+        <td><p>Email</p></td>
+    </tr>
+    @foreach (var u in ViewBag.Users)
+    {
+        <tr>
+            <td><p>@u.Name</p></td>
+            <td><p>@u.Password</p></td>
+            <td><p>@u.Email</p></td>
+
+        </tr>
+    }
+</table>
+
+<h1>@Html.ActionLink("Roles", "Index", "Roles")</h1>
+<table border="1">
+    <tr>
+        <td><p>Role Id</p></td>
+        <td><p>Role Name</p></td>
+    </tr>
+    @foreach (var r in ViewBag.Roles)
+    {
+        <tr>
+            <td><p>@r.Id</p></td>
+            <td><p>@r.Name</p></td>
+        </tr>
+    }
+</table>
+<h1>@Html.ActionLink("Purchases", "Index", "Purchases")</h1>
+<table border="1">
+    <tr>
+        <td><p>Client Name</p></td>
+        <td><p>Address</p></td>
+        <td><p>Movie Id</p></td>
+        <td>Date</td>
+    </tr>
+    @foreach (var p in ViewBag.Purchases)
+    {
+        <tr>
+            <td><p>@p.Person</p></td>
+            <td><p>@p.Address</p></td>
+            <td><p>@p.Price</p></td>
+            <td><p>@p.Date</p></td>
+
+        </tr>
+    }
+</table>
