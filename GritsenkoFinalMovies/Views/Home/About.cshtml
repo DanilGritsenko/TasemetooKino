@@ -1,75 +1,129 @@
 ﻿@{
     ViewBag.Title = "Gritsenko Kino Admin";
 }
+<link rel="stylesheet" href="~/Content/tables.css">
 
 <h1> Click on table's name to redirect to table's controller</h1>
 
 <h1>@Html.ActionLink("Movies", "Index", "Movies")</h1>
 
-<table border="1">
-    <tr>
-        <td><p>Movie Name</p></td>
-        <td><p>Director</p></td>
-        <td><p>Ticket Price</p></td>
-    </tr>
-    @foreach (var m in ViewBag.Movies)
-    {
-        <tr>
-            <td><p>@m.Name</p></td>
-            <td><p>@m.Director</p></td>
-            <td><p>@m.Price€</p></td>
-        </tr>
-    }
-</table>
+<div class="wrapper">
 
-<h1>@Html.ActionLink("Users", "Index", "Users")</h1>
-<table border="1">
-    <tr>
-        <td><p>User Name</p></td>
-        <td><p>Password</p></td>
-        <td><p>Email</p></td>
-    </tr>
-    @foreach (var u in ViewBag.Users)
-    {
-        <tr>
-            <td><p>@u.Name</p></td>
-            <td><p>@u.Password</p></td>
-            <td><p>@u.Email</p></td>
+    <div class="table">
+        <div class="row header blue">
+            <div class="cell">
+                Movie Name
+            </div>
+            <div class="cell">
+                Director
+            </div>
+            <div class="cell">
+                Date
+            </div>
+            <div class="cell">
+                Price
+            </div>
+        </div>
+        @foreach (var m in ViewBag.Movies)
+        {
+            <div class="row">
+                <div class="cell" data-title="Movie Name">
+                    @m.Name
+                </div>
+                <div class="cell" data-title="Director">
+                    @m.Director
+                </div>
+                <div class="cell" data-title="Date">
+                    @m.Date
+                </div>
+                <div class="cell" data-title="Price">
+                    @m.Price€
+                </div>
+                <div class="cell" data-title="">
+                    <a href="/Home/Buy/@m.Id">Purchase</a>
+                </div>
+            </div>
+        }
+    </div>
 
-        </tr>
-    }
-</table>
+    <h1>@Html.ActionLink("Users", "Index", "Users")</h1>
+    <div class="wrapper">
 
-<h1>@Html.ActionLink("Roles", "Index", "Roles")</h1>
-<table border="1">
-    <tr>
-        <td><p>Role Id</p></td>
-        <td><p>Role Name</p></td>
-    </tr>
-    @foreach (var r in ViewBag.Roles)
-    {
-        <tr>
-            <td><p>@r.Id</p></td>
-            <td><p>@r.Name</p></td>
-        </tr>
-    }
-</table>
-<h1>@Html.ActionLink("Purchases", "Index", "Purchases")</h1>
-<table border="1">
-    <tr>
-        <td><p>Client Name</p></td>
-        <td><p>Address</p></td>
-        <td><p>Movie Id</p></td>
-        <td>Date</td>
-    </tr>
-    @foreach (var p in ViewBag.Purchases)
-    {
-        <tr>
-            <td><p>@p.Person</p></td>
-            <td><p>@p.Address</p></td>
-            <td><p>@p.Price</p></td>
-            <td><p>@p.Date</p></td>
+        <div class="table">
+            <div class="row header blue">
+                <div class="cell">
+                    User Name
+                </div>
+                <div class="cell">
+                    Password
+                </div>
+                <div class="cell">
+                    Email
+                </div>
+            </div>
+            @foreach (var u in ViewBag.Users)
+            {
+                <div class="row">
+                    <div class="cell" data-title="User Name">@u.Name </div>
+                    <div class="cell" data-title="Password">@u.Password </div>
+                    <div class="cell" data-title="Email">@u.Email </div>
+                </div>
+            }
+        </div>
+    </div>
 
-        </tr>
-    }
-</table>
+    <h1>@Html.ActionLink("Roles", "Index", "Roles")</h1>
+    <div class="wrapper">
+        <div class="table">
+            <div class="row header blue">
+                <div class="cell">
+                    Role Id
+                </div>
+                <div class="cell">
+                    Role Name
+                </div>
+            </div>
+            @foreach (var r in ViewBag.Roles)
+            {
+                <div class="row">
+                <div class="cell" data-title="Role Id">@r.Id </div>
+                <div class="cell" data-title="Role Name">@r.Name </div>
+                </div>
+            }
+        </div>
+    </div>
+    <h1>@Html.ActionLink("Purchases", "Index", "Purchases")</h1>
+    <div class="wrapper">
+
+        <div class="table">
+            <div class="row header blue">
+                <div class="cell">
+                    Client Name
+                </div>
+                <div class="cell">
+                    Client Email
+                </div>
+                <div class="cell">
+                    Movie
+                </div>
+                <div class="cell">
+                    Date
+                </div>
+            </div>
+            @{var i = 0; }
+            @foreach (var p in ViewBag.Purchases)
+            {
+            <div class="row">
+                <div class="cell" data-title="Client Name">@p.Person </div>
+                <div class="cell" data-title="Client Email">@p.Address </div>
+                <div class="cell" data-title="Movie">@p.MovieId </div>
+                <div class="cell" data-title="Date">@p.Date </div>
+                @{i++;}
+            </div>
+            }
+            <div class="row">
+                Total purchases: @i
+            </div>
+        </div>
+            </div>
+</div>

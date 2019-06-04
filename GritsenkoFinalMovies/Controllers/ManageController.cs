@@ -10,6 +10,7 @@ using GritsenkoFinalMovies.Models;
 
 namespace GritsenkoFinalMovies.Controllers
 {
+    // Контроллер для логина/регистрации/т.п, в основном не используется т.к было создано с проектом, и я решил использовать свой контроллер
     [Authorize]
     public class ManageController : Controller
     {

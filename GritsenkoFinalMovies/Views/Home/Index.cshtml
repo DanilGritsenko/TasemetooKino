@@ -2,24 +2,46 @@
     ViewBag.Title = "Home Page";
 }
 
-<div>
-    <h3>Gritsenko Kino</h3>
-    <table border="1">
-        <tr>
-            <td><p>Movie Name</p></td>
-            <td><p>Director</p></td>
-            <td><p>Ticket Price</p></td>
-            <td></td>
-        </tr>
+<link rel="stylesheet" href="~/Content/tables.css">
+<h1>Gritsenko Kino</h1>
+
+<div class="wrapper">
+
+    <div class="table">
+        <div class="row header blue">
+            <div class="cell">
+                Movie Name
+            </div>
+            <div class="cell">
+                Director
+            </div>
+            <div class="cell">
+                Date
+            </div>
+            <div class="cell">
+                Price
+            </div>
+        </div>
         @foreach (var m in ViewBag.Movies)
         {
-            <tr>
-                <td><p>@m.Name</p></td>
-                <td><p>@m.Director</p></td>
-                <td><p>@m.Price€</p></td>
-                <td><p><a href="/Home/Buy/@m.Id">Купить</a></p></td>
-
-            </tr>
+        <div class="row">
+            <div class="cell" data-title="Movie Name">
+                @m.Name
+            </div>
+            <div class="cell" data-title="Director">
+                @m.Director
+            </div>
+            <div class="cell" data-title="Date">
+                @m.Date
+            </div>
+            <div class="cell" data-title="Price">
+                @m.Price€
+            </div>
+            <div class="cell" data-title="">
+                <a href="/Home/Buy/@m.Id">Purchase</a>
+            </div>
+        </div>
         }
-    </table>
-</div>
+    </div>
+    </div>
+

@@ -10,6 +10,7 @@ using GritsenkoFinalMovies.Models;
 
 namespace GritsenkoFinalMovies.Controllers
 {
+    // Контроллер для работы с таблицей покупок билетов
     public class PurchasesController : Controller
     {
         private MovieContext db = new MovieContext();

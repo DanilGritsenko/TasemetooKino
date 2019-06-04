@@ -11,6 +11,7 @@ using GritsenkoFinalMovies.Models;
 
 namespace GritsenkoFinalMovies.Controllers
 {
+    // Контролер для работы с зарегестрированными пользователями
     [Authorize(Roles = "admin")]
     public class UsersController : Controller
     {

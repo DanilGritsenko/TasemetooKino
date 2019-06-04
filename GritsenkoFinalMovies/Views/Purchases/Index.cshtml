@@ -3,49 +3,51 @@
 @{
     ViewBag.Title = "Index";
 }
+@Html.ActionLink("Admin Panel", "About", "Home")
 
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
+<div class="table">
+    <div class="row header blue">
+        <div class="cell">
             @Html.DisplayNameFor(model => model.Movie.Name)
-        </th>
-        <th>
+        </div>
+        <div class="cell">
             @Html.DisplayNameFor(model => model.Person)
-        </th>
-        <th>
+        </div>
+        <div class="cell">
             @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
+        </div>
+        <div class="cell">
             @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
-    </tr>
+        </div>
+        <div class="cell"></div>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Movie.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PurchaseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PurchaseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="cell">
+                @Html.DisplayFor(modelItem => item.Movie.Name)
+            </div>
+            <div class="cell">
+                @Html.DisplayFor(modelItem => item.Person)
+            </div>
+            <div class="cell">
+                @Html.DisplayFor(modelItem => item.Address)
+            </div>
+            <div class="cell">
+                @Html.DisplayFor(modelItem => item.Date)
+            </div>
+            <div class="cell">
+                @Html.ActionLink("Edit", "Edit", new { id = item.PurchaseId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PurchaseId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PurchaseId })
+            </div>
+        </div>
+    }
 
-</table>
+</div>

@@ -3,118 +3,115 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using GritsenkoFinalMovies.Models;
 
-namespace GritsenkoFinalMovies.Controllers
+namespace GritsenkoFinalMovies.Models
 {
-    // Контролер для работы с таблицей ролей
-    [Authorize(Roles = "admin")]
-    public class RolesController : Controller
+    // Контролер для работы с таблицей с фильмами
+    public class MoviesController : Controller
     {
-        private UserContext db = new UserContext();
+        private MovieContext db = new MovieContext();
 
-        // GET: Roles
-        public async Task<ActionResult> Index()
+        // GET: Movies
+        public ActionResult Index()
         {
-            return View(await db.Roles.ToListAsync());
+            return View(db.Movies.ToList());
         }
 
-        // GET: Roles/Details/5
-        public async Task<ActionResult> Details(int? id)
+        // GET: Movies/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = await db.Roles.FindAsync(id);
-            if (role == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(movie);
         }
 
-        // GET: Roles/Create
+        // GET: Movies/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Roles/Create
+        // POST: Movies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Role role)
+        public ActionResult Create([Bind(Include = "Id,Name,Director,Date,Price")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.Roles.Add(role);
-                await db.SaveChangesAsync();
+                db.Movies.Add(movie);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(role);
+            return View(movie);
         }
 
-        // GET: Roles/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        // GET: Movies/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = await db.Roles.FindAsync(id);
-            if (role == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(movie);
         }
 
-        // POST: Roles/Edit/5
+        // POST: Movies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Role role)
+        public ActionResult Edit([Bind(Include = "Id,Name,Director,Date,Price")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(role).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.Entry(movie).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(role);
+            return View(movie);
         }
 
-        // GET: Roles/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        // GET: Movies/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = await db.Roles.FindAsync(id);
-            if (role == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(movie);
         }
 
-        // POST: Roles/Delete/5
+        // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Role role = await db.Roles.FindAsync(id);
-            db.Roles.Remove(role);
-            await db.SaveChangesAsync();
+            Movie movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

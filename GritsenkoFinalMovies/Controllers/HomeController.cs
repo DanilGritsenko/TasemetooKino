@@ -8,9 +8,11 @@ using System.Web.Security;
 
 namespace GritsenkoFinalMovies.Controllers
 {
+    // Модель для основного (первого) контролера, единственный контролер который видит пользователь
     [Authorize]
     public class HomeController : Controller
     {
+        
         MovieContext db = new MovieContext();
         UserContext db2 = new UserContext();
         public ActionResult Index()
@@ -19,7 +21,7 @@ namespace GritsenkoFinalMovies.Controllers
             ViewBag.Movies = movies;
             return View();
         }
-
+        // админ панель (Не стал пачкаться с переименованием страниц и т.д)
         [Authorize(Roles="admin")]
         public ActionResult About()
         {
@@ -30,10 +32,11 @@ namespace GritsenkoFinalMovies.Controllers
 
             return View();
         }
+        
         [HttpGet]
-        public ActionResult Buy(int id)
+        public ActionResult Buy(int id) 
         {
-            ViewBag.MovieId = id;
+            ViewBag.MovieId = id; // При клике "Купить" берёт ИД выбранного фильма
             return View();
         }
         [HttpPost]
@@ -42,13 +45,11 @@ namespace GritsenkoFinalMovies.Controllers
             purchase.Date = DateTime.Now;
             db.Purchases.Add(purchase);
             db.SaveChanges();
-            return "Спасибо," + purchase.Person + " за покупку!";
+            return "Thank you, " + purchase.Person + " for your purchase!";
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

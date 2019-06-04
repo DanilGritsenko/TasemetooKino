@@ -191,10 +191,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieContext.cs" />
-    <Compile Include="Models\MoviesController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User + Role.cs" />
     <Compile Include="Models\UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomRoleProvider.cs" />
@@ -205,6 +205,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\tables.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
